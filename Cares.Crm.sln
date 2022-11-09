@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cares.Crm.Customization", "Cares.Crm\Cares.Crm.Customization.csproj", "{869D7D24-CAB7-43D9-9FE3-1FD29E612C88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cares.Crm.Plugin", "Cares.Crm.Plugin\Cares.Crm.Plugin.csproj", "{FA11DA31-2C3F-4813-9E1E-6B9F4FFDA2F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cares.Crm.WorkflowActivityLibrary", "Cares.Crm.WorkflowActivityLibrary\Cares.Crm.WorkflowActivityLibrary.csproj", "{542C2D8E-379E-46B3-8EC7-78948BDC5478}"
+EndProject
+Project("{88A30576-7583-4F75-8136-5EFD2C14ADFF}") = "Cares.Crm.Package", "Cares.Crm.Package\Cares.Crm.Package.csproj", "{4E57CC45-AA36-4E58-BB0E-9ACE21A3071B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FA11DA31-2C3F-4813-9E1E-6B9F4FFDA2F6} = {FA11DA31-2C3F-4813-9E1E-6B9F4FFDA2F6}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{C08DC3EF-6109-48D7-AF0F-42AD5C7F1784}"
+	ProjectSection(SolutionItems) = preProject
+		DLLs\AutoNumberGeneration.dll = DLLs\AutoNumberGeneration.dll
+		DLLs\Cares.Crm.Core.Allotment.dll = DLLs\Cares.Crm.Core.Allotment.dll
+		DLLs\Cares.Crm.Core.dll = DLLs\Cares.Crm.Core.dll
+		DLLs\log4net.dll = DLLs\log4net.dll
+		DLLs\Microsoft.Crm.Sdk.Proxy.dll = DLLs\Microsoft.Crm.Sdk.Proxy.dll
+		DLLs\Microsoft.Xrm.Sdk.dll = DLLs\Microsoft.Xrm.Sdk.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8CB39B5B-34CE-4F44-BF04-3B6E4A28B897}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cares.Crm.Plugins.Tests", "Cares.Crm.Plugins.Tests\Cares.Crm.Plugins.Tests.csproj", "{E77692BA-BEAB-476B-8ADE-0E78B32E12B3}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{869D7D24-CAB7-43D9-9FE3-1FD29E612C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{869D7D24-CAB7-43D9-9FE3-1FD29E612C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{869D7D24-CAB7-43D9-9FE3-1FD29E612C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{869D7D24-CAB7-43D9-9FE3-1FD29E612C88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA11DA31-2C3F-4813-9E1E-6B9F4FFDA2F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA11DA31-2C3F-4813-9E1E-6B9F4FFDA2F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA11DA31-2C3F-4813-9E1E-6B9F4FFDA2F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA11DA31-2C3F-4813-9E1E-6B9F4FFDA2F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{542C2D8E-379E-46B3-8EC7-78948BDC5478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{542C2D8E-379E-46B3-8EC7-78948BDC5478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{542C2D8E-379E-46B3-8EC7-78948BDC5478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{542C2D8E-379E-46B3-8EC7-78948BDC5478}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E57CC45-AA36-4E58-BB0E-9ACE21A3071B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E57CC45-AA36-4E58-BB0E-9ACE21A3071B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E57CC45-AA36-4E58-BB0E-9ACE21A3071B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4E57CC45-AA36-4E58-BB0E-9ACE21A3071B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E57CC45-AA36-4E58-BB0E-9ACE21A3071B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E57CC45-AA36-4E58-BB0E-9ACE21A3071B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E77692BA-BEAB-476B-8ADE-0E78B32E12B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E77692BA-BEAB-476B-8ADE-0E78B32E12B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E77692BA-BEAB-476B-8ADE-0E78B32E12B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E77692BA-BEAB-476B-8ADE-0E78B32E12B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E77692BA-BEAB-476B-8ADE-0E78B32E12B3} = {8CB39B5B-34CE-4F44-BF04-3B6E4A28B897}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3DA7EFA-E514-4AFE-BBAD-548080A21B44}
+	EndGlobalSection
+	GlobalSection(CRMSolutionProperties) = preSolution
+		SolutionIsBoundToCRM = True
+	EndGlobalSection
+EndGlobal

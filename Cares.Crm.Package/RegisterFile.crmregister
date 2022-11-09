@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Register xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/crm/2011/tools/pluginregistration">
+  <Solutions>
+    <Solution Assembly="Cares.Crm.Plugin.dll" Id="758e6712-db9f-47dd-ab92-0ae7dd79f853" IsolationMode="Sandbox" SourceType="Database">
+      <PluginTypes>
+        <clear />
+        <Plugin Description="Plug-in to Cares.Crm.Plugin.Contact.SetState" FriendlyName="Cares.Crm.Plugin.Contact.SetState" Name="Cares.Crm.Plugin.PreOperationcontactDelete" Id="8a098c95-5b41-43ff-97d5-eb91c5e237a5" TypeName="Cares.Crm.Plugin.PreOperationcontactDelete">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.Contact.Delete" Description="Cares.Crm.Plugin.Contact.Delete" Id="13f3923e-f552-e811-90ef-005056a3b666" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="contact" Rank="1" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.Contact.SetStateDynamicEntity" Description="Cares.Crm.Plugin.Contact.SetStateDynamicEntity" Id="a4b13cee-b553-e811-90ef-005056a3b666" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="SetStateDynamicEntity" Mode="Synchronous" PrimaryEntityName="contact" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.Contact.SetState" Description="Cares.Crm.Plugin.Contact.SetState" Id="8d7c9acd-b553-e811-90ef-005056a3b666" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="SetState" Mode="Synchronous" PrimaryEntityName="contact" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to Cares.Crm.Plugin.PreOperationcares_caresorderCreate" FriendlyName="Cares.Crm.Plugin.PreOperationcares_caresorderCreate" Name="Cares.Crm.Plugin.PreOperationcares_caresorderCreate" Id="36c46a22-1107-48ae-aeb4-d37e876c483e" TypeName="Cares.Crm.Plugin.PreOperationcares_caresorderCreate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.PreOperationcares_caresorderCreate" Description="Cares.Crm.Plugin.PreOperationcares_caresorderCreate" Id="a173738a-4b89-e811-90f1-005056a3b666" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Create" Mode="Synchronous" PrimaryEntityName="cares_caresorder" Rank="1" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Creation of Return" FriendlyName="Creation of Return" Name="Cares.Crm.Plugin.ReturnCreate" Id="3d80d2c2-b491-462a-b529-61a145b642ce" TypeName="Cares.Crm.Plugin.ReturnCreate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.ReturnCreate: Creation of Return" Description="Cares.Crm.Plugin.ReturnCreate" Id="d6280449-b5dd-4d1c-ae14-4341797664da" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Create" Mode="Synchronous" PrimaryEntityName="cares_caresreturn" Rank="1" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="PreValidation of Deactivation/Reactivation of Return" FriendlyName="PreValidation of Deactivation/Reactivation of Return" Name="Cares.Crm.Plugin.ReturnPreValidationDeReActivate" Id="83479c94-4503-4a6e-b66d-026861314e14" TypeName="Cares.Crm.Plugin.ReturnPreValidationDeReActivate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="PreValidation of Deactivation/Reactivation of Return" Description="Cares.Crm.Plugin.ReturnPreValidationDeReActivate: PreValidation of Deactivation/Reactivation of Return" Id="4fc8f85a-dfb4-4d69-adb7-f538fab978a1" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="SetState" Mode="Synchronous" PrimaryEntityName="cares_caresreturn" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Deactivation/Reactivation of Return" FriendlyName="Deactivation/Reactivation of Return" Name="Cares.Crm.Plugin.ReturnDeReActivate" Id="c608a8b5-92ba-e811-90f5-005056a3b666" TypeName="Cares.Crm.Plugin.ReturnDeReActivate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Deactivation/Reactivation of Return" Description="Cares.Crm.Plugin.ReturnDeReActivate: Deactivation/Reactivation of Return" Id="0726a728-abd8-e811-90f7-005056a3b666" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="SetState" Mode="Synchronous" PrimaryEntityName="cares_caresreturn" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Asyn Post-Deactivation/Reactivation of Return" FriendlyName="Asyn Post-Deactivation/Reactivation of Return" Name="Cares.Crm.Plugin.ReturnAsynPostDeReActivate" Id="04621fab-13a9-4ad0-8983-bef0dbdefdc5" TypeName="Cares.Crm.Plugin.ReturnAsynPostDeReActivate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Asyn Post-Deactivation/Reactivation of Return" Description="Cares.Crm.Plugin.ReturnAsynPostDeReActivate: Asyn Post-Deactivation/Reactivation of Return" Id="8e34539c-624c-4e21-aaea-c5529f98d622" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="SetState" Mode="Synchronous" PrimaryEntityName="cares_caresreturn" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Deletion of Return" FriendlyName="Deletion of Return" Name="Cares.Crm.Plugin.ReturnDelete" Id="57f6aea3-88b4-40d6-baa6-6213c9ef5074" TypeName="Cares.Crm.Plugin.ReturnDelete">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Deletion of Return" Description="Cares.Crm.Plugin.ReturnDelete: Deletion of Return" Id="64eb04d8-b07f-48b2-b67b-ad5e21bec057" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="cares_caresReturn" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Deactivation of ReturnItem" FriendlyName="Deactivation of ReturnItem" Name="Cares.Crm.Plugin.ReturnItemDeactivate" Id="def63023-379c-453f-858a-456920299318" TypeName="Cares.Crm.Plugin.ReturnItemDeactivate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Deactivation of ReturnItem" Description="Cares.Crm.Plugin.ReturnItemDeactivate: Deactivation of ReturnItem" Id="30da48bc-9227-4984-8b9b-983a45651ad9" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="SetState" Mode="Synchronous" PrimaryEntityName="cares_caresreturnitem" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Deletion of ReturnItem" FriendlyName="Deletion of ReturnItem" Name="Cares.Crm.Plugin.ReturnItemDelete" Id="ddc97b36-a8f5-4575-89b9-80d073b4c9c4" TypeName="Cares.Crm.Plugin.ReturnItemDelete">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Deletion of ReturnItem" Description="Cares.Crm.Plugin.ReturnItemDelete: Deletion of ReturnItem" Id="dd600b57-a060-41f8-a29b-eb976ad2d181" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="cares_caresreturnitem" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to Cares.Crm.Plugin.PreOperationcares_approvalCreate" FriendlyName="Cares.Crm.Plugin.PreOperationcares_approvalCreate" Name="Cares.Crm.Plugin.PostOperationcares_approvalCreate" Id="be08a8b5-92ba-e811-90f5-005056a3b666" TypeName="Cares.Crm.Plugin.PostOperationcares_approvalCreate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.PostOperation_Update of cares_approval" Description="Cares.Crm.Plugin.PostOperation_Update of cares_approval" FilteringAttributes="cares_approvalenddate,cares_approvalstartdate,cares_enddate,cares_startdate" Id="63e67dbf-5c89-e811-90f1-005056a3b666" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Update" Mode="Synchronous" PrimaryEntityName="cares_approval" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.PreOperation.Update of cares_approval" Description="Cares.Crm.Plugin.PreOperation.Update of cares_approval" FilteringAttributes="cares_approvalenddate,cares_approvalstartdate,cares_enddate,cares_startdate" Id="8f38b5ed-46a0-e811-90f2-005056a3b666" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Update" Mode="Synchronous" PrimaryEntityName="cares_approval" Rank="1" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="ef98c86f-854d-e811-90ef-005056a3b666">
+              <Images />
+            </Step>
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.PreOperationcares_approvalCreate" Description="Cares.Crm.Plugin.PreOperationcares_approvalCreate" Id="a473738a-4b89-e811-90f1-005056a3b666" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Create" Mode="Synchronous" PrimaryEntityName="cares_approval" Rank="1" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to Delete of cares_caresorder" FriendlyName="Delete of cares_caresorder" Name="Cares.Crm.Plugin.PostOperationcares_caresorderDelete" Id="00000000-0000-0000-0000-000000000000" TypeName="Cares.Crm.Plugin.PostOperationcares_caresorderDelete">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Delete of cares_caresorder" Description="Delete of cares_caresorder" Id="00000000-0000-0000-0000-000000000000" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="cares_caresorder" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to Delete of cares_caresorder" FriendlyName="Delete of cares_caresorder" Name="Cares.Crm.Plugin.PreOperationcares_caresorderDelete" Id="463e36e7-1a9d-4902-9e20-723bce4521b2" TypeName="Cares.Crm.Plugin.PreOperationcares_caresorderDelete">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Delete of cares_caresorder" Description="Delete of cares_caresorder" Id="bbd5a7cc-ae99-e811-90f2-005056a3b666" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="cares_caresorder" Rank="1" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Deletion of Email" FriendlyName="Deletion of Email" Name="Cares.Crm.Plugin.EmailDelete" Id="d6f6dbf8-b23c-494e-8fd7-d42cc8cb9e4e" TypeName="Cares.Crm.Plugin.EmailDelete">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Deletion of Email" Description="Cares.Crm.Plugin.EmailDelete: Deletion of Email" Id="f7382f10-41b3-4bac-b70f-65ddf02c1315" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="email" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to Cares.Crm.Plugin.PostOperationcontactUpdate" FriendlyName="Cares.Crm.Plugin.PostOperationcontactUpdate" Name="Cares.Crm.Plugin.PostOperationcontactUpdate" Id="00000000-0000-0000-0000-000000000000" TypeName="Cares.Crm.Plugin.PostOperationcontactUpdate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.PostOperationcontactUpdate" Description="Cares.Crm.Plugin.PostOperationcontactUpdate" FilteringAttributes="fullname" Id="00000000-0000-0000-0000-000000000000" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Update" Mode="Synchronous" PrimaryEntityName="contact" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to Cares.Crm.Plugin.PostOperationcares_approvalitemUpdate" FriendlyName="Cares.Crm.Plugin.PostOperationcares_approvalitemUpdate" Name="Cares.Crm.Plugin.PostOperationcares_approvalitemUpdate" Id="00000000-0000-0000-0000-000000000000" TypeName="Cares.Crm.Plugin.PostOperationcares_approvalitemUpdate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.PostOperationcares_approvalitemUpdate" Description="Cares.Crm.Plugin.PostOperationcares_approvalitemUpdate" FilteringAttributes="cares_balance" Id="00000000-0000-0000-0000-000000000000" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Update" Mode="Synchronous" PrimaryEntityName="cares_approvalitem" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to Cares.Crm.Plugin.PostOperationcares_approvalitemgroupUpdate" FriendlyName="Cares.Crm.Plugin.PostOperationcares_approvalitemgroupUpdate" Name="Cares.Crm.Plugin.PostOperationcares_approvalitemgroupUpdate" Id="00000000-0000-0000-0000-000000000000" TypeName="Cares.Crm.Plugin.PostOperationcares_approvalitemgroupUpdate">
+          <Steps>
+            <clear />
+            <Step AsyncAutoDelete="false" Name="Cares.Crm.Plugin.PostOperationcares_approvalitemgroupUpdate" Description="Cares.Crm.Plugin.PostOperationcares_approvalitemgroupUpdate" FilteringAttributes="cares_balance" Id="00000000-0000-0000-0000-000000000000" ImpersonatingUserId="00000000-0000-0000-0000-000000000000" MessageName="Update" Mode="Synchronous" PrimaryEntityName="cares_approvalitemgroup" Rank="1" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly" MessageEntityId="00000000-0000-0000-0000-000000000000">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+      </PluginTypes>
+    </Solution>
+  </Solutions>
+  <XamlWorkflows />
+</Register>

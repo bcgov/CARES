@@ -1,0 +1,50 @@
+/*CARES WebResource - CSS*/
+body {
+    font-family: Segoe UI, Tahoma, Arial !important;
+    font-size: 12px !important;
+}
+
+thead {
+    /*font: normal normal normal 12px / 20px 'SegoeUI-Semibold', 'Segoe UI SemiBold';*/
+}
+
+tbody {
+    height: 0px !important;
+}
+
+.gj-checkbox-bootstrap {
+    padding-top: 0px !important;
+}
+
+.gj-grid tbody {
+    /*height: 100% !important;*/
+}
+
+    .gj-grid tbody tr td {
+        height: 28px !important;
+        border: none !important;
+    }
+
+#grid {
+    border: none !important;
+}
+
+.gj-grid thead tr th {
+    font-weight: 400 !important;
+    font-size: 11px !important;
+    background-color: white !important;
+    border: none !important;
+    border-top: 1px solid lightgrey !important;
+    border-bottom: 1px solid lightgrey !important;
+}
+
+    .gj-grid thead tr th .gj-checkbox-material-icons {
+        display: none;
+    }
+
+
+
+/*CRM Controls including Form*/
+.ms-crm-FormSection {
+    background: beige !important;
+}

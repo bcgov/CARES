@@ -1,0 +1,429 @@
+﻿<html>
+
+<head>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- /WebResources/ClientGlobalContext.js.aspx is accessed using a relative path
+    because the name of the Web Resource created from this file is "cares_OrderedItems.htm".
+    The use of the backslash within the name creates a virtual folder that must be considered
+    in relative links between Web Resources.
+    -->
+    <script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="cares_DynamicsWebApi.min.js"></script>
+    <!-- Add bluebird js to avoid 'Promise' is undefined error in IE11 when loading jquery3.3.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" />
+    <link href="cares_/Styles/cares_CrmStyle.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+</head>
+
+<body style="overflow: hidden">
+    <div style="background-color: #f7f7f7; width: 100%; margin-bottom: 20px; height: 50px; padding-right: 15px; padding-top: 15px; position: fixed; overflow: hidden;">
+        <a style="float: right" title="Add to Return Items list." id="addToReturnItems_addImageButton" onclick="AddToReturnItems();" href="javascript:;"><img title="Add to Return Items list." id="addToReturnItems_addImageButtonImage" alt="Add to Return Items list." src="cares_add_16_new" /></a>
+    </div>
+    <div style="overflow: hidden; height: 90%; overflow-y: scroll; width: 100%; position: relative; top: 50px;">
+        <table id="grid" style="font-size: 12px;"></table>
+    </div>
+    <script type="text/javascript">
+        var returnId;
+        $(document).ready(function () {
+            returnId = GetReturnId();
+            RetrieveOrderedItems(returnId);
+
+            var formType = window.parent.Xrm.Page.ui.getFormType();
+            if (formType != 2) {
+                var addButton = document.getElementById("addToReturnItems_addImageButton");
+                addButton.hidden = "hidden";
+            }
+            //maxWindow();
+        });
+        //*************************** HELPER FUNCTIONS ******************************
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            } else {
+                return decodeURI(results[1]) || 0;
+            }
+        }
+
+        function GetReturnId() {
+            return $.urlParam('id');
+            //var urlParams = new URLSearchParams(location.search); // URLSearchParams is not supported in IE
+            //return urlParams.get('id');
+        }
+
+        var dynamicsWebApi = new DynamicsWebApi({
+            webApiVersion: '8.2'
+        }); //DynamicsWebApi makes calls to Web API v8.0 if a configuration not set
+        var grid;
+        var addingItem = false;
+
+        function maxWindow() {
+            debugger;
+            window.moveTo(0, 0);
+            window.resizeTo(screen.width, screen.height);
+        }
+
+        //Returns a Ordered Items list
+        function RetrieveOrderedItems(returnId) {
+            // Fetch the list of all Order Items for all Orders with a status of Submitted and associated to the parent Approval where the Order’s Created On date is less than or equal to current date - 55 days.
+            var fetchXml = '<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">\
+                                          <entity name="cares_caresorderitem">\
+                                            <attribute name="cares_caresorderitemid" />\
+                                            <attribute name="cares_name" />\
+                                            <attribute name="cares_returnamount" />\
+                                            <attribute name="cares_qty" />\
+                                            <attribute name="createdby" />\
+                                            <attribute name="cares_orderid" />\
+                                            <attribute name="cares_product" />\
+                                            <order attribute="cares_name" descending="false" />\
+                                            <link-entity name="cares_caresorder" from="cares_caresorderid" to="cares_orderid" alias="order">\
+                                              <attribute name="cares_ordernumber" />\
+                                              <attribute name="cares_orderdate" />\
+                                              <attribute name="createdon" />\
+                                              <filter type="and">\
+                                                <condition attribute="statuscode" operator="in">\
+                                                    <value>2</value>\
+                                                    <value>750760002</value>\
+                                                </condition>\
+                                                <condition attribute="createdon" operator="last-x-days" value="55" />\
+                                              </filter>\
+                                                <link-entity name="cares_approval" from="cares_approvalid" to="cares_approvalid" alias="approval">\
+                                                    <link-entity name= "cares_caresreturn" from= "cares_approvalid" to= "cares_approvalid" alias= "approvalReturn" >\
+                                                        <filter type="and">\
+                                                            <condition attribute="cares_caresreturnid" operator="eq" uitype="cares_caresreturn" value="' + returnId + '" />\
+                                                        </filter>\
+                                                    </link-entity>\
+                                                </link-entity>\
+                                            </link-entity>\
+                                            <link-entity name="product" from="productid" to="cares_product" visible="false" link-type="outer" alias="product">\
+                                                <attribute name="vendorpartnumber" />\
+                                                <attribute name="productnumber" />\
+                                                <attribute name="cares_additionalinfo" />\
+                                                <attribute name="name" />\
+                                            </link-entity>\
+                                            <link-entity name="cares_caresreturnitem" from="cares_orderitem" to="cares_caresorderitemid" alias="returnItem" link-type="outer">\
+                                              <attribute name="cares_returnid" />\
+                                              <attribute name="cares_orderitem" />\
+                                              <attribute name="cares_caresreturnitemid" />\
+                                              <filter type="and">\
+                                                <condition attribute="cares_returnid" operator="eq" uitype="cares_caresreturn" value="' + returnId + '" />\
+                                              </filter>\
+                                            </link-entity>\
+                                          </entity>\
+                                        </fetch>';
+            console.log('[INFO] Executing FetchXml request...');
+
+            dynamicsWebApi.executeFetchXml("cares_caresorderitems", fetchXml).then(function (response) {
+                console.log('[INFO] FetchXML request executed.');
+                var orderedItemIDsMap = new Map();
+                var data = [];
+                if (response.error === undefined) {
+                    /// <param name="response" type="DWA.Types.FetchXmlResponse">Request response</param>
+                    response.value.forEach(function (item) {
+                        var orderId = '',
+                            orderNumber = '',
+                            orderCreatedOn = '',
+                            productId = '',
+                            productName = '',
+                            productAddInfo = '',
+                            productMaterialNumber = '',
+                            productMfrPartNumber = '',
+                            orderItemQty = '',
+                            orderItemReturnQty = '',
+                            returnItemId = '';
+                        var orderItemId = item.cares_caresorderitemid;
+                        if (!orderedItemIDsMap.has(orderItemId)) {
+                            if (item.order != undefined && item.order != null) {
+                                orderId = item._cares_orderid_value;
+                                orderNumber = item.order.cares_ordernumber;
+                                orderCreatedOn = item.order.cares_orderdate;
+                            }
+                            if (item.product != undefined && item.product != null) {
+                                productId = item._cares_product_value;
+                                productName = item.product.name;
+                                productAddInfo = item.product.cares_additionalinfo;
+                                productMaterialNumber = item.product.productnumber;
+                                productMfrPartNumber = item.product.vendorpartnumber;
+                            }
+                            if (item.returnItem != undefined && item.returnItem != null) {
+                                returnItemId = item.returnItem.cares_caresreturnitemid;
+                            } else if (item.cares_qty == null ||
+                                (item.cares_returnamount != null && item.cares_qty <= item.cares_returnamount)) {
+                                returnItemId = '00000000-0000-0000-0000-000000000000'; // populate return item id column to disable this Order Item row in the grid.
+                            }
+                            debugger;
+                            //todo (leo): To Implement 12.12 req:
+                            // The system must disable the check box next to the Order Items record if
+                            //  - The Order Items Return Qty equals the Order Items Qty.
+                            //      o	I.E.all of the items have already been returned
+                            //  - The Order Item has already been added to the Return Item list
+                            var orderedItemGridLineData = {
+                                'OrderItemId': orderItemId,
+                                'OrderId': orderId,
+                                'OrderNumber': orderNumber,
+                                'OrderCreatedOn': orderCreatedOn,
+                                'ProductId': productId,
+                                'ProductName': productName,
+                                'ProductAddInfo': productAddInfo,
+                                'ProductMaterialNumber': productMaterialNumber,
+                                'ProductMfrPartNumber': productMfrPartNumber,
+                                'Qty': item.cares_qty,
+                                'ReturnQty': item.cares_returnamount,
+                                'ReturnItemId': returnItemId
+                            }
+                            data.push(
+                                orderedItemGridLineData
+                            );
+                            orderedItemIDsMap.set(orderItemId, orderedItemGridLineData);
+                        }
+                    });
+                } else {
+                    console.log('[ERROR] FetchXML request failed. Details: ' + response.error.message);
+                }
+                BindGrid(data);
+            })
+                .catch(function (error) {
+                    //catch an error
+                    console.log(error.message);
+                });
+        }
+
+        function BindGrid(data) {
+            //gijgo grid
+            if (grid != undefined)
+                grid.destroy();
+            grid = $('#grid').grid({
+                dataSource: data,
+                primaryKey: 'OrderItemId',
+                uiLibrary: 'bootstrap4',
+                fixedHeader: true,
+                columns: [
+                    /*{
+                                        field: 'Add',
+                                        title: addToReturnItemsButton,
+                                        width: 48
+                                    },*/
+                    {
+                        field: 'OrderNumber',
+                        title: 'Order Number',
+                        sortable: true,
+                        width: 100,
+                    }, {
+                        field: 'OrderCreatedOn',
+                        title: 'Created On',
+                        sortable: true,
+                        type: 'date',
+                        width: 100,
+                    }, {
+                        field: 'ProductName',
+                        title: 'Product',
+                        sortable: true,
+                        width: 350,
+                    }, {
+                        field: 'ProductAddInfo',
+                        title: 'Add-Info',
+                        sortable: true,
+                        width: 100,
+                    }, {
+                        field: 'ProductMaterialNumber',
+                        title: 'Material Number',
+                        sortable: true,
+                        width: 130,
+                    }, {
+                        field: 'ProductMfrPartNumber',
+                        title: 'Mfr Part Number',
+                        sortable: true,
+                        width: 250,
+                    }, {
+                        field: 'Qty',
+                        title: 'Qty',
+                        sortable: true,
+                        width: 70,
+                    }, {
+                        field: 'ReturnQty',
+                        title: 'Return Qty',
+                        sortable: true,
+                        width: 80,
+                    }, {
+                        field: 'CreateBy',
+                        title: 'Created By',
+                        sortable: true,
+                        width: 100,
+                    }/** {
+                            field: 'ReturnItemId',
+                            title: 'ReturnItemId',
+                            hidden: true,
+                            cssClass: 'returnItemId'
+                        }, {
+                            field: 'OrderItemId',
+                            title: 'Order Item Id',
+                            hidden: true
+                        }, {
+                            field: 'OrderId',
+                            title: 'Order Id',
+                            hidden: true
+                        }, {
+                            field: 'ProductId',
+                            title: 'Product Id',
+                            hidden: true
+                        }*/
+                ],
+                //pager: { limit: 5, sizes: [5, 10] },
+                selectionType: 'multiple',
+                selectionMethod: 'checkbox',
+                columnReorder: true,
+                resizableColumns: true,
+                responsive: true,
+            });
+            grid.on('rowSelect', function (e, $row, id, record) {
+                if (record.ReturnItemId != '') {
+                    debugger;
+                    grid.setSelected(id);
+                    return false;
+                }
+            });
+            $('#btnSelectAll').on('click', function () {
+                grid.selectAll();
+            });
+            //// Select Order Item if it has been added to the Return Items grid
+            //grid.getAll(true).forEach(function (record) {
+            //    if (record.ReturnItemId != '') {
+            //        grid.setSelected(record.OrderItemId);
+            //    }
+            //});
+
+            // Add + button to the grid in the 1st column of the grid's header row
+            // var addToReturnItemsButton = document.createElement("div");
+            // addToReturnItemsButton.innerHTML = "<a href='javascript:;' id='addToReturnItems_addImageButton' onclick='AddToReturnItems();' title='Add to Return Items list.'><img src='cares_Add_16_New' id='addToReturnItems_addImageButtonImage' alt='Add to Return Items list.' title='Add to Return Items list.' /></a>";
+            // var gridHeaderCellLabel = $(".gj-grid thead tr th")[0];
+            // gridHeaderCellLabel.appendChild(addToReturnItemsButton);
+
+            //todo: mbe display block icon when an order item has been already added to the return items list
+            $('.returnItemId>div').each(function (index, element) {
+                if (element.innerHTML != '') // element is the div which contains the ReturnItemId value
+                {
+                    var gridTR = element.parentElement.parentElement;
+                    // gridTR.setAttribute("style", "background-color: beige;");
+                    gridTR.firstChild.firstChild.firstChild.firstChild.setAttribute("disabled", "disabled"); // disabled the input (tr > td > div > label > input)
+                }
+            });
+
+            console.log('BindGrid completed.')
+        }
+        var addedItemsCount = 0;
+
+        function AddToReturnItems() {
+            var orderedItemsMap = new Map();
+            //build a fetch xml
+            var fetchXml = '<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">\
+                                          <entity name="cares_caresreturnitem">\
+                                              <attribute name="cares_returnid" />\
+                                              <attribute name="cares_orderitem" />\
+                                              <attribute name="cares_caresreturnitemid" />\
+                                              <filter type="and">\
+                                                <condition attribute="cares_returnid" operator="eq" uitype="cares_caresreturn" value="' + returnId + '" />\
+                                              </filter>\
+                                          </entity>\
+                                        </fetch>';
+            console.log('[INFO] Executing FetchXml request...');
+            dynamicsWebApi.executeFetchXml("cares_caresreturnitems", fetchXml).then(function (response) {
+                console.log('[INFO] FetchXML request executed.');
+                if (response.error === undefined) {
+                    /// <param name="response" type="DWA.Types.FetchXmlResponse">Request response</param>
+                    response.value.forEach(function (record) {
+                        if (!orderedItemsMap.has(record._cares_orderitem_value))
+                            orderedItemsMap.set(record._cares_orderitem_value, record.cares_caresreturnitemid);
+                    });
+
+                    // Add selected order items to the Return Items
+                    var selectedOrderItemIDs = grid.getSelections();
+                    if (selectedOrderItemIDs.length == 0) {
+                        Xrm.Utility.alertDialog('Please select at least one order item then click Add button again.');
+                        return;
+                    }
+                    addedItemsCount = 0;
+
+                    selectedOrderItemIDs.forEach(function (orderItemId) {
+                        var orderItemData = grid.getById(orderItemId);
+                        // TO HANDLE the bug where same item is still added...
+                        if (orderedItemsMap.has(orderItemId)) {
+                            console.log('Order Item has already been added to the Return Item. OrderItemId: ' + orderItemId);
+                        } else {
+                            //initialize a CRM entity record object
+                            var returnItem = {
+                                'cares_Product@odata.bind': 'products(' + orderItemData.ProductId + ')',
+                                'cares_Order@odata.bind': 'cares_caresorders(' + orderItemData.OrderId + ')',
+                                'cares_OrderItem@odata.bind': 'cares_caresorderitems(' + orderItemData.OrderItemId + ')',
+                                'cares_ReturnId@odata.bind': 'cares_caresreturns(' + returnId + ')',
+                                'cares_name': orderItemData.ProductName
+                            };
+                            //call dynamicsWebApi.create function
+                            dynamicsWebApi.create(returnItem, "cares_caresreturnitems").then(function (returnItemId) {
+                                console.log('[INFO] Added a new Return Item ID: ' + returnItemId); //newly created returnItemId
+                                addedItemsCount++;
+                                if (addedItemsCount >= grid.getSelections().length) {
+                                    debugger;
+                                    // Refresh the Order Items grid
+                                    RetrieveOrderedItems(returnId);
+
+                                    // Refresh the Return Items grid (by using PostMessage???)
+                                    var serverUrl = GetServerURL();
+                                    window.top.postMessage("RefreshReturnItemsGrid", serverUrl);
+                                }
+                            }).catch(function (error) {
+                                console.log(error.message);
+
+                                Xrm.Utility.alertDialog('Error occurred when adding return item. System will reload the Order Items and Return Items lists. Details: ' + error.message);
+                                // Refresh the Return Items grid (by using PostMessage???)
+                                var serverUrl = GetServerURL();
+                                window.top.postMessage("RefreshReturnItemsGrid", serverUrl);
+                                // Refresh the Order Items grid
+                                RetrieveOrderedItems(returnId);
+                            })
+
+                        }
+                    });
+                } else {
+                    console.log('[ERROR] FetchXML request failed. Details: ' + response.error.message);
+                    //throw response.error.message;
+                }
+            })
+                .catch(function (error) {
+                    //catch an error
+                    console.log('Error Details: ' + error.message);
+                    // throw error;
+                });
+
+        }
+
+        function TestD365WebApi() {
+            dynamicsWebApi.executeUnboundFunction("WhoAmI").then(function (response) {
+                Xrm.Utility.alertDialog('Hello Dynamics 365! My id is: ' + response.UserId);
+            }).catch(function (error) {
+                console.log(error.message);
+            });
+        }
+
+        function GetServerURL() {
+            debugger;
+            var globalContext = Xrm.Utility.getGlobalContext();
+            var serverUrl = globalContext.getClientUrl();
+            serverUrl = serverUrl.substring(0, serverUrl.lastIndexOf('/'));
+            if (serverUrl.match(/\/$/)) {
+                serverUrl = serverUrl.substring(0, serverUrl.length - 1);
+            }
+
+            return serverUrl;
+        }
+    </script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>4e57cc45-aa36-4e58-bb0e-9ace21a3071b</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cares.Crm.Cares.Crm.Package</RootNamespace>
+    <AssemblyName>Cares.Crm.Cares.Crm.Package</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <OutputFile>Cares.Crm.Package.zip</OutputFile>
+    <Name>Cares.Crm.Package</Name>
+    <MainFile>WebResources\images\Heart-16.png</MainFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="WebResources\Cascading Stylesheet %28CSS%29\" />
+    <Folder Include="WebResources\images" />
+    <Folder Include="WebResources\Script %28JScript%29\" />
+    <Folder Include="WebResources\Script %28JScript%29\" />
+    <Folder Include="WebResources\Script %28JScript%29\" />
+    <Folder Include="WebResources\Script %28JScript%29\" />
+    <Folder Include="WebResources\Script %28JScript%29\" />
+    <Folder Include="WebResources\Web Page %28HTML%29\" />
+    <RegisterPlugin Include="RegisterFile.crmregister">
+      <DisplayName>RegisterFile</DisplayName>
+      <UniqueName>cares_RegisterFile</UniqueName>
+      <WebResourceType>NotSupported</WebResourceType>
+    </RegisterPlugin>
+    <Folder Include="WebResources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cares.Crm.Plugin\Cares.Crm.Plugin.csproj">
+      <Name>Cares.Crm.Plugin</Name>
+      <Project>{fa11da31-2c3f-4813-9e1e-6b9f4ffda2f6}</Project>
+      <Private>True</Private>
+      <SilverlightApplication>False</SilverlightApplication>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CRMWebResource Include="WebResources\Cascading Stylesheet (CSS)\cares_CrmStyle.css">
+      <DisplayName>cares_crm</DisplayName>
+      <UniqueName>new_cares_crm</UniqueName>
+      <WebResourceType>CascadingStylesheet</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Band-Aid-16.png">
+      <DisplayName>Band_Aid_16</DisplayName>
+      <UniqueName>cares_Band_Aid_16</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Band-Aid-32.png">
+      <DisplayName>Band_Aid_32</DisplayName>
+      <UniqueName>cares_Band_Aid_32</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Data-Replace-16.png">
+      <DisplayName>Data_Replace_16</DisplayName>
+      <UniqueName>cares_Data_Replace_16</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Data-Replace-32.png">
+      <DisplayName>Data_Replace_32</DisplayName>
+      <UniqueName>cares_Data_Replace_32</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Delivery-16.png">
+      <DisplayName>Delivery_16</DisplayName>
+      <UniqueName>cares_Delivery_16</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Delivery-32.png">
+      <DisplayName>Delivery_32</DisplayName>
+      <UniqueName>cares_Delivery_32</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Document-Check-16.png">
+      <DisplayName>Document_Check_16</DisplayName>
+      <UniqueName>cares_Document_Check_16</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Document-Check-32.png">
+      <DisplayName>Document_Check_32</DisplayName>
+      <UniqueName>cares_Document_Check_32</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\First-Aid-Kit-02-16.png">
+      <DisplayName>First_Aid_Kit_02_16</DisplayName>
+      <UniqueName>cares_First_Aid_Kit_02_16</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\First-Aid-Kit-02-32.png">
+      <DisplayName>First_Aid_Kit_02_32</DisplayName>
+      <UniqueName>cares_First_Aid_Kit_02_32</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Heart-16.png">
+      <DisplayName>Heart_16</DisplayName>
+      <UniqueName>cares_Heart_16</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Heart-24.png">
+      <DisplayName>Heart_24</DisplayName>
+      <UniqueName>cares_Heart_24</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Heart-32.png">
+      <DisplayName>Heart_32</DisplayName>
+      <UniqueName>cares_Heart_32</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Heart-48.png">
+      <DisplayName>Heart_48</DisplayName>
+      <UniqueName>cares_Heart_48</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Heart-ECG-16.png">
+      <DisplayName>Heart_ECG_16</DisplayName>
+      <UniqueName>cares_Heart_ECG_16</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Heart-ECG-32.png">
+      <DisplayName>Heart_ECG_32</DisplayName>
+      <UniqueName>cares_Heart_ECG_32</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Letter-Open-16.png">
+      <DisplayName>Letter_Open_16</DisplayName>
+      <UniqueName>cares_Letter_Open_16</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Letter-Open-32.png">
+      <DisplayName>Letter_Open_32</DisplayName>
+      <UniqueName>cares_Letter_Open_32</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Sales-Order-16.png">
+      <DisplayName>Sales_Order_16</DisplayName>
+      <UniqueName>cares_Sales_Order_16</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\images\Sales-Order-32.png">
+      <DisplayName>Sales_Order_32</DisplayName>
+      <UniqueName>cares_Sales_Order_32</UniqueName>
+      <WebResourceType>PNG</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\ApprovalItem.js">
+      <DisplayName>ApprovalItem</DisplayName>
+      <UniqueName>cares_ApprovalItem</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_ApprovalItemGroup_JScript.js">
+      <DisplayName>ApprovalItemGroup JScript</DisplayName>
+      <UniqueName>cares_ApprovalItemGroup_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <WebResourceLanguage>English (United States)</WebResourceLanguage>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_Approval_JScript.js">
+      <DisplayName>Approval_JScript</DisplayName>
+      <UniqueName>cares_Approval_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <Description>Approval_JScript</Description>
+      <WebResourceLanguage>English (United States)</WebResourceLanguage>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_CARES_GlobalReplace_JScript.js">
+      <DisplayName>CARES_GlobalReplace_JScript</DisplayName>
+      <UniqueName>cares_CARES_GlobalReplace_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <Description>CARES_GlobalReplace_JScript</Description>
+      <WebResourceLanguage>English (United States)</WebResourceLanguage>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_CARES_OrderItem_JScript.js">
+      <DisplayName>CARES_OrderItem_JScript</DisplayName>
+      <UniqueName>cares_CARES_OrderItem_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <Description>CARES_OrderItem_JScript</Description>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_CARES_Order_JScript.js">
+      <DisplayName>CARES_Order_JScript</DisplayName>
+      <UniqueName>cares_CARES_Order_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <Description>CARES_Order_JScript</Description>
+      <WebResourceLanguage>English (United States)</WebResourceLanguage>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_CARES_Product_JScript.js">
+      <DisplayName>cares_CARES_Product_JScript</DisplayName>
+      <UniqueName>new_cares_CARES_Product_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_CARES_ReturnItem_JScript.js">
+      <DisplayName>CARES_ReturnItem_JScript</DisplayName>
+      <UniqueName>cares_CARES_ReturnItem_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <WebResourceLanguage>English (United States)</WebResourceLanguage>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_CARES_Return_JScript.js">
+      <DisplayName>CARES_Return_JScript</DisplayName>
+      <UniqueName>cares_CARES_Return_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <Description>CARES_Return_JScript</Description>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_Common.js">
+      <DisplayName>cares_Common</DisplayName>
+      <UniqueName>new_cares_Common</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_Contact_JS.js">
+      <DisplayName>Contact_JS</DisplayName>
+      <UniqueName>cares_Contact_JS</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <Description>Contact_JS</Description>
+      <WebResourceLanguage>English (United States)</WebResourceLanguage>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_jqueryrestdataoperationfunctions.js">
+      <DisplayName>jqueryrestdataoperationfunctions</DisplayName>
+      <UniqueName>cares_jqueryrestdataoperationfunctions</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <Description>jqueryrestdataoperationfunctions</Description>
+      <WebResourceLanguage>English (United States)</WebResourceLanguage>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_jqueryrestdataoperationfunctions.js" />
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_Phone_Formatting.js">
+      <DisplayName>Phone number formatting</DisplayName>
+      <UniqueName>cares_Phone_Formatting</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <Description>Auto format jscript for phone number fields</Description>
+      <WebResourceLanguage>English (United States)</WebResourceLanguage>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_PostCode_Formatting.js">
+      <DisplayName>PostCode_Formatting</DisplayName>
+      <UniqueName>cares_PostCode_Formatting</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+      <WebResourceLanguage>English (United States)</WebResourceLanguage>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\cares_Program_JScript.js">
+      <DisplayName>cares_Program_JScript</DisplayName>
+      <UniqueName>cares_cares_Program_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Script %28JScript%29\new_cares_CARES_Return_JScript.js">
+      <DisplayName>cares_CARES_Return_JScript</DisplayName>
+      <UniqueName>new_cares_CARES_Return_JScript</UniqueName>
+      <WebResourceType>Script</WebResourceType>
+    </CRMWebResource>
+    <CRMWebResource Include="WebResources\Web Page %28HTML%29\cares_OrderedItems.html">
+      <DisplayName>cares_OrderedItems</DisplayName>
+      <UniqueName>new_cares_OrderedItems</UniqueName>
+      <WebResourceType>WebPage</WebResourceType>
+    </CRMWebResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\CRM\Microsoft.CrmDeveloperTools.12.targets" />-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+			 Other similar extension points exist, see Microsoft.Common.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>
